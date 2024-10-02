@@ -48,14 +48,14 @@ jobs:
       with:
         repository: ${{ github.repository_owner }}/argocd-kube
         token: ${{ github.token }}
-        path: gitops-argocd
+        # path: gitops-argocd
         fetch-depth: 0
 
     - name: Fix image tag
-      working-directory: gitops-argocd
+      # working-directory: gitops-argocd
       run: |
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-        sed -i "16s/.*/      - image: $ECR_REGISTRY\/$ECR_REPOSITORY:$GIT_HASH/g" deployment.yaml
+        sed -i "16s/.*/        - image: $ECR_REGISTRY\/$ECR_REPOSITORY:$GIT_HASH/g" deployment.yaml
         cat deployment.yaml
 
     - name: Commit and push
