@@ -47,7 +47,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ${{ github.repository_owner }}/argocd-kube
-        token: ${{ github.token }}
+        token: ${{ secrets.MY_GITHUB_TOKEN }}
         path: gitops-argocd
         fetch-depth: 0
 
