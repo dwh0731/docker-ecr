@@ -61,7 +61,7 @@ jobs:
     - name: Commit and push
       uses: actions-js/push@v1.5
       with:
-        github_token: ${{ github.token }}
+        github_token: ${{ secrets.MY_GITHUB_TOKEN }}
         message: Inject Tag
         directory: gitops-argocd
         repository: ${{ github.repository_owner }}/argocd-kube
