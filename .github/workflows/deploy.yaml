@@ -51,11 +51,12 @@ jobs:
         path: gitops-argocd
         fetch-depth: 0
 
-    - name: Add date and push
+    - name: Fix image tag
       working-directory: gitops-argocd
       run: |
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
         sed -i "16s/.*/      - image: $ECR_REGISTRY\/$ECR_REPOSITORY:$GIT_HASH/g" deployment.yaml
+        cat deployment.yaml
 
     - name: Commit and push
       uses: actions-js/push@v1
